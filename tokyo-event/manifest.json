@@ -1,0 +1,15 @@
+{
+  "name": "tokyo-event",
+  "version": "1.0.0",
+  "category": "Information / Events",
+  "description": "查询指定日期的东京活动信息，包括演唱会、展览、祭典、体育赛事等。支持中日英三语查询。",
+  "homepage": "",
+  "compat": [
+    "claude-code",
+    "claude-ai",
+    "cursor",
+    "codex-cli",
+    "gemini-cli"
+  ],
+  "dependencies": ["web-search"]
+}

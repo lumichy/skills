@@ -1,0 +1,23 @@
+{
+  "skill_name": "tts-edge",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Read this text aloud: Hello, this is a test of the Edge-TTS skill.",
+      "expected_output": "Generate an MP3 audio file with English text and play it",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "朗读这段中文：你好，今天天气不错，很高兴见到你。",
+      "expected_output": "Generate an MP3 audio file with Chinese text using zh-CN-XiaoxiaoNeural voice",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Convert this Japanese text to speech: こんにちは、お元気ですか？",
+      "expected_output": "Generate an MP3 audio file with Japanese text using ja-JP-NanamiNeural voice",
+      "files": []
+    }
+  ]
+}

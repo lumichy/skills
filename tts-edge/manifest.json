@@ -1,0 +1,14 @@
+{
+  "name": "tts-edge",
+  "version": "1.0.0",
+  "category": "Audio / Text-to-Speech",
+  "description": "Convert text to speech using Edge-TTS (Microsoft Edge's online TTS service). Supports English, Chinese, and Japanese with high-quality natural voices.",
+  "homepage": "",
+  "compat": [
+    "claude-code",
+    "claude-ai",
+    "cursor",
+    "codex-cli",
+    "gemini-cli"
+  ]
+}

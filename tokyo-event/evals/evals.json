@@ -1,0 +1,23 @@
+{
+  "skill_name": "tokyo-event",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "6月15日东京有什么活动？",
+      "expected_output": "列出2026年6月15日东京的各种活动，按类型分类，包含活动名称、时间、地点",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Tokyo events on June 20, 2026",
+      "expected_output": "List events in Tokyo on June 20, 2026, categorized by type with name, time, and location",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "周末东京有演唱会吗？",
+      "expected_output": "查询近期周末东京的演唱会活动，列出名称、时间、地点",
+      "files": []
+    }
+  ]
+}
