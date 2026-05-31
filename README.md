@@ -21,7 +21,7 @@ Convert text to speech using Edge-TTS (Microsoft Edge's online TTS service).
 
 **Directory structure:**
 ```
-tts-edge/
+skills/tts-edge/
 ├── SKILL.md          # Skill definition
 ├── manifest.json     # Metadata
 ├── scripts/
@@ -50,7 +50,7 @@ Query Tokyo events for a specific date.
 
 **Directory structure:**
 ```
-tokyo-event/
+skills/tokyo-event/
 ├── SKILL.md          # Skill definition
 ├── manifest.json     # Metadata
 └── evals/
@@ -60,6 +60,26 @@ tokyo-event/
 **Dependencies:** Requires `web-search` skill (Brave Search API) for optimal results.
 
 ---
+
+## Directory Structure
+
+```
+.
+├── README.md
+└── skills/
+    ├── tts-edge/
+    │   ├── SKILL.md
+    │   ├── manifest.json
+    │   ├── scripts/
+    │   │   └── tts.py
+    │   └── evals/
+    │       └── evals.json
+    └── tokyo-event/
+        ├── SKILL.md
+        ├── manifest.json
+        └── evals/
+            └── evals.json
+```
 
 ## Installation
 
