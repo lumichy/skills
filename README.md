@@ -4,6 +4,26 @@ Custom skills for Claude Code CLI.
 
 ## Skills
 
+### agnes-local-generation
+
+Generate text, images, image edits, and videos with Agnes AI, then save completed media locally.
+
+**Features:**
+- Downloads generated images and videos to local files
+- Supports local image inputs for image editing
+- Supports text-to-video, image-to-video, multi-image, and keyframe workflows
+- Resumes asynchronous video tasks
+- Uses only the Python standard library
+
+**Usage:**
+```bash
+/agnes-local-generation Generate an image of a floating city and save it locally.
+```
+
+**Requirements:** An Agnes AI API key in `AGNES_API_KEY`, `AGNES_API_TOKEN`, or `APIHUB_AGNES_API_KEY`.
+
+---
+
 ### tts-edge
 
 Convert text to speech using Edge-TTS (Microsoft Edge's online TTS service).
@@ -92,6 +112,7 @@ git clone https://github.com/lumichy/skills.git
 
 2. Copy skills to your Claude Code skills directory:
 ```bash
+cp -r skills/agnes-local-generation ~/.claude/skills/
 cp -r skills/tts-edge ~/.claude/skills/
 cp -r skills/tokyo-event ~/.claude/skills/
 ```
@@ -102,6 +123,7 @@ cp -r skills/tokyo-event ~/.claude/skills/
 
 You can also create symbolic links:
 ```bash
+ln -s $(pwd)/skills/agnes-local-generation ~/.claude/skills/agnes-local-generation
 ln -s $(pwd)/skills/tts-edge ~/.claude/skills/tts-edge
 ln -s $(pwd)/skills/tokyo-event ~/.claude/skills/tokyo-event
 ```

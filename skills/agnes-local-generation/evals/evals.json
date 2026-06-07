@@ -1,0 +1,14 @@
+[
+  {
+    "prompt": "Use Agnes to generate an image of a floating city and save it locally.",
+    "expected_behavior": "Runs the image command, downloads the returned image, and reports its absolute local path without exposing the API key."
+  },
+  {
+    "prompt": "Edit ./portrait.png with Agnes to add warm sunset lighting.",
+    "expected_behavior": "Uses the local image as an image-edit input, saves the edited image locally, and preserves the original file."
+  },
+  {
+    "prompt": "Animate the generated image as a five-second Agnes video.",
+    "expected_behavior": "Uses a reachable HTTP(S) image URL, requests 121 frames at 24 fps, waits for completion, and downloads the MP4."
+  }
+]

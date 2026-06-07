@@ -1,0 +1,15 @@
+{
+  "name": "agnes-local-generation",
+  "version": "1.0.0",
+  "category": "Media / AI Generation",
+  "description": "Generate text, images, image edits, and videos with Agnes AI, then download completed media to local files.",
+  "homepage": "https://github.com/lumichy/skills/tree/main/skills/agnes-local-generation",
+  "compat": [
+    "claude-code",
+    "claude-ai",
+    "cursor",
+    "codex-cli",
+    "gemini-cli"
+  ],
+  "dependencies": []
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agnes Local Generation"
+  short_description: "Generate Agnes images and videos as local files"
+  default_prompt: "Use $agnes-local-generation to generate an image or video and save it locally."
