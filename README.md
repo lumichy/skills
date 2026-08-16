@@ -1,6 +1,6 @@
-# Claude Code Skills
+﻿# Claude Code Skills
 
-Custom skills for Claude Code CLI.
+Custom skills for Claude Code CLI and AI Coding Agents.
 
 ## Skills
 
@@ -21,6 +21,38 @@ Generate text, images, image edits, and videos with Agnes AI, then save complete
 ```
 
 **Requirements:** An Agnes AI API key in `AGNES_API_KEY`, `AGNES_API_TOKEN`, or `APIHUB_AGNES_API_KEY`.
+
+---
+
+### comfyui-generator
+
+Connect to local or remote ComfyUI servers, automatically discover workflows, and execute image / video generations.
+
+**Features:**
+- Discovers workflows via ComfyUI server `/api/userdata` endpoint or local directories
+- Auto-classifies workflows into `image`, `video` (text-to-video), and `i2v` (image-to-video)
+- Supports remote servers over HTTP/HTTPS with optional API token authentication
+- Flexible parameters for prompt, negative prompt, dimensions, and seed
+- Uses only the Python standard library
+
+**Usage:**
+```bash
+/comfyui-generator Generate an image of a futuristic cyberpunk city.
+```
+
+**Directory structure:**
+```
+skills/comfyui-generator/
+├── SKILL.md          # Skill definition
+├── README.md         # Detailed guide
+├── manifest.json     # Metadata
+├── scripts/
+│   └── comfy_engine.py  # ComfyUI API engine
+└── evals/
+    └── evals.json    # Evaluation cases
+```
+
+**Requirements:** A running ComfyUI server (`COMFYUI_HOST`, default `127.0.0.1:8000`).
 
 ---
 
@@ -87,43 +119,62 @@ skills/tokyo-event/
 .
 ├── README.md
 └── skills/
-    ├── tts-edge/
+    ├── agnes-local-generation/
     │   ├── SKILL.md
+    │   ├── README.md
+    │   ├── manifest.json
+    │   ├── agents/
+    │   ├── evals/
+    │   ├── references/
+    │   ├── scripts/
+    │   └── tests/
+    ├── comfyui-generator/
+    │   ├── SKILL.md
+    │   ├── README.md
     │   ├── manifest.json
     │   ├── scripts/
-    │   │   └── tts.py
+    │   │   └── comfy_engine.py
     │   └── evals/
     │       └── evals.json
-    └── tokyo-event/
+    ├── tokyo-event/
+    │   ├── SKILL.md
+    │   ├── manifest.json
+    │   └── evals/
+    │       └── evals.json
+    └── tts-edge/
         ├── SKILL.md
         ├── manifest.json
+        ├── scripts/
+        │   └── tts.py
         └── evals/
             └── evals.json
 ```
 
 ## Installation
 
-### For Claude Code CLI
+### For Claude Code CLI / AI Agents
 
 1. Clone this repository:
 ```bash
 git clone https://github.com/lumichy/skills.git
 ```
 
-2. Copy skills to your Claude Code skills directory:
+2. Copy skills to your skills directory:
 ```bash
 cp -r skills/agnes-local-generation ~/.claude/skills/
+cp -r skills/comfyui-generator ~/.claude/skills/
 cp -r skills/tts-edge ~/.claude/skills/
 cp -r skills/tokyo-event ~/.claude/skills/
 ```
 
-3. Restart Claude Code to load the new skills.
+3. Restart your agent to load the new skills.
 
 ### Manual Installation
 
 You can also create symbolic links:
 ```bash
 ln -s $(pwd)/skills/agnes-local-generation ~/.claude/skills/agnes-local-generation
+ln -s $(pwd)/skills/comfyui-generator ~/.claude/skills/comfyui-generator
 ln -s $(pwd)/skills/tts-edge ~/.claude/skills/tts-edge
 ln -s $(pwd)/skills/tokyo-event ~/.claude/skills/tokyo-event
 ```

@@ -1,0 +1,23 @@
+﻿{
+  "skill_name": "comfyui-generator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "List available ComfyUI workflows.",
+      "expected_output": "Runs comfy_engine.py with --list flag and outputs discovered workflows with media types and locations.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Generate an image of a futuristic cyberpunk city at night using ComfyUI.",
+      "expected_output": "Runs comfy_engine.py with --media-type image and the requested prompt.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Create a video animation of water flowing down a mountain stream using ComfyUI.",
+      "expected_output": "Runs comfy_engine.py with --media-type video and the requested prompt.",
+      "files": []
+    }
+  ]
+}
