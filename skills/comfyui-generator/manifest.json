@@ -1,6 +1,6 @@
 ﻿{
   "name": "comfyui-generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "category": "Media / AI Generation",
   "description": "Automatically identify existing ComfyUI workflows (on the local machine or on a remote ComfyUI server) and generate images or videos according to user requests.",
   "homepage": "https://github.com/lumichy/skills/tree/main/skills/comfyui-generator",

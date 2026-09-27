@@ -51,6 +51,8 @@ python scripts/comfy_engine.py --list --host comfy.example.com --scheme https --
 - If the server cannot be reached, it **falls back to local workflow directories**
   (see `WORKFLOW_DIRS` in `scripts/comfy_engine.py`).
 - Entries are shown with a `[SERVER]` or `[LOCAL]` tag in `--list`.
+- Workflows that wrap a nested graph in a subgraph node are flattened automatically; widget
+  values and externally linked inputs are propagated into the nested nodes.
 
 ## Commands
 
@@ -97,6 +99,11 @@ To force using a specific workflow (matched by name, e.g. `text2image_qwen.json`
 ```bash
 python scripts/comfy_engine.py --workflow "text2image_qwen.json" --prompt "<PROMPT_TEXT>"
 ```
+
+Prefer this form whenever the exact workflow matters. Without `--workflow`, the engine picks
+the **first** discovered workflow of the matching media type, in server listing order: the
+default changes when workflows are added or renamed, and the first match may be unsuitable for
+the request (e.g. an image-edit workflow that requires an input image).
 
 ## Options & Arguments
 

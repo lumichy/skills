@@ -485,8 +485,12 @@ def flatten_subgraphs(ui_data, prompt_text=None, seed=None, width=None, height=N
                 link_idmap[bl["id"]] = next_link_id
                 next_link_id += 1
 
-        # Exposed inputs whose underlying body target is a widget input. The
-        # instance node's widgets_values align to these in order.
+        inst_inputs = {i.get("name"): i for i in node.get("inputs", []) if i.get("name")}
+        inst_input_names = [i.get("name") for i in node.get("inputs", []) if i.get("name")]
+        inst_outputs = node.get("outputs", [])
+        inst_widgets = node.get("widgets_values", []) or []
+
+        # Exposed inputs whose underlying body target is a widget input.
         widgetable = []
         for ex in sg.get("inputs", []):
             lid = (ex.get("linkIds") or [None])[0]
@@ -498,28 +502,18 @@ def flatten_subgraphs(ui_data, prompt_text=None, seed=None, width=None, height=N
             if tnode and 0 <= tslot < len(tnode.get("inputs", [])) and \
                tnode["inputs"][tslot].get("widget") is not None:
                 widgetable.append(ex.get("name"))
-        widget_pos = {name: i for i, name in enumerate(widgetable)}
 
-        inst_inputs = {i.get("name"): i for i in node.get("inputs", []) if i.get("name")}
-        inst_outputs = node.get("outputs", [])
-        inst_widgets = node.get("widgets_values", []) or []
+        # widgets_values align positionally with the instance's own input list.
+        # Indexing by the widget-backed subset instead shifts every value once an
+        # exposed input is socket-driven rather than widget-driven.
+        if len(inst_input_names) == len(inst_widgets):
+            widget_pos = {name: i for i, name in enumerate(inst_input_names)}
+        else:
+            widget_pos = {name: i for i, name in enumerate(widgetable)}
 
         # Inject instance values / external links into the exposed body inputs.
         for ex in sg.get("inputs", []):
             name = ex.get("name")
-            lid = (ex.get("linkIds") or [None])[0]
-            bl = body_links.get(lid)
-            if not bl or bl.get("origin_id") != -10:
-                continue
-            tnode = body_nodes.get(bl.get("target_id"))
-            tslot = bl.get("target_slot")
-            if not tnode or not (0 <= tslot < len(tnode.get("inputs", []))):
-                continue
-            target_name = tnode["inputs"][tslot].get("name")
-            if not target_name:
-                continue
-            target_id = str(idmap[bl["target_id"]])
-
             inst_inp = inst_inputs.get(name)
             top_link_id = inst_inp.get("link") if inst_inp else None
 
@@ -551,7 +545,21 @@ def flatten_subgraphs(ui_data, prompt_text=None, seed=None, width=None, height=N
                 continue
             if isinstance(value, str) and value in CONTROL_AFTER_GENERATE_VALUES:
                 continue
-            overrides[(target_id, target_name)] = value
+
+            # An exposed input can fan out to several body inputs; every target
+            # needs the value, not just the first linked one.
+            for lid in (ex.get("linkIds") or []):
+                bl = body_links.get(lid)
+                if not bl or bl.get("origin_id") != -10:
+                    continue
+                tnode = body_nodes.get(bl.get("target_id"))
+                tslot = bl.get("target_slot")
+                if not tnode or not (0 <= tslot < len(tnode.get("inputs", []))):
+                    continue
+                target_name = tnode["inputs"][tslot].get("name")
+                if not target_name:
+                    continue
+                overrides[(str(idmap[bl["target_id"]]), target_name)] = value
 
         # Copy body nodes with remapped ids and re-linked inputs/outputs.
         for bn in sg.get("nodes", []):

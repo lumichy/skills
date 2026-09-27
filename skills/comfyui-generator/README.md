@@ -69,6 +69,36 @@ python scripts/comfy_engine.py --media-type i2v --input-image "portrait.png" --p
 python scripts/comfy_engine.py --workflow "text2image_qwen.json" --prompt "Cyberpunk city alley in neon rain"
 ```
 
+## Workflow Selection
+
+When `--workflow` is omitted, the engine picks the **first** discovered workflow whose media
+type matches the request (`--media-type`, or `image` by default). That order comes from the
+server's workflow listing, so the default silently changes whenever a workflow is added or
+renamed — and the first match is not necessarily a suitable one (an image-edit workflow, for
+example, requires an input image and will fail on a plain text prompt).
+
+Pass `--workflow` explicitly whenever the result has to be reproducible:
+
+```powershell
+python scripts/comfy_engine.py --workflow "text2image_qwen.json" --prompt "..." --output-dir "<USER_WORKING_DIR>"
+```
+
+Workflows that wrap a nested graph in a single subgraph node are flattened automatically:
+widget values and externally linked inputs are propagated into the nested nodes.
+
+## Changelog
+
+### 1.0.1
+
+- Fixed widget value misalignment when flattening subgraph workflows. Values were indexed
+  against the widget-backed subset of the instance inputs, which shifted every value by one
+  position as soon as an exposed input was socket-driven rather than widget-driven (for
+  example a model filename landed in `unet_name`, and the run failed with HTTP 400).
+- Fixed exposed inputs that fan out to several nested inputs. Only the first linked target
+  received the value, so the remaining targets silently kept their defaults (for example an
+  empty prompt reached a prompt-rewriting node, which then answered with a generic assistant
+  reply and the generated image had nothing to do with the request).
+
 ## Project Structure
 
 ```text
