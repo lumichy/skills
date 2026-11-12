@@ -84,6 +84,39 @@ skills/tts-edge/
 
 ---
 
+### id-photo-studio
+
+Generate official ID/passport photos (resume, passport, mynumber, drivers license, US visa) and convenience-store multi-up print sheets (L/2L) from any casual person photo with AI studio harmonizing and Python pixel-lock alignment.
+
+**Features:**
+- Precise millimeter cropping conforming to official ID standards (Resume 40×30mm, Passport 45×35mm, License 30×24mm, US Visa 51×51mm)
+- Auto-generates convenience store L-size (89×127mm) & 2L-size (127×178mm) multi-up print sheets @ 300 DPI with crop marks and 50mm ruler scale
+- Head-tilt auto-leveling (`--draw-grid` / `--level-and-crop`) from visual eye coordinates
+- 100% facial identity preservation via 2-stage hybrid synthesis (Pattern C & Pattern A)
+- Agent-agnostic design (auto-detects available image editing tools, subagents, or MCP)
+
+**Usage:**
+```bash
+/id-photo-studio Create a passport photo for the person in this image.
+```
+
+**Directory structure:**
+```
+skills/id-photo-studio/
+├── SKILL.md          # Skill definition & workflow
+├── README.md         # Multilingual guide (JP / EN / CN)
+├── manifest.json     # Metadata
+├── references/
+│   └── presets.md    # Size specifications & prompt templates
+└── scripts/
+    ├── composite_original_head.py # Tilt leveling & Stage-2 inner-face blend
+    └── process_id_photo.py        # Cropping & multi-up sheet generator
+```
+
+**Requirements:** `pip install pillow numpy scipy`
+
+---
+
 ### tokyo-event
 
 Query Tokyo events for a specific date.
@@ -136,6 +169,12 @@ skills/tokyo-event/
     │   │   └── comfy_engine.py
     │   └── evals/
     │       └── evals.json
+    ├── id-photo-studio/
+    │   ├── SKILL.md
+    │   ├── README.md
+    │   ├── manifest.json
+    │   ├── references/
+    │   └── scripts/
     ├── tokyo-event/
     │   ├── SKILL.md
     │   ├── manifest.json
