@@ -7,3 +7,4 @@
   "compat": ["claude-code", "antigravity", "cursor", "codex-cli", "gemini-cli"],
   "dependencies": ["python", "pillow", "numpy", "scipy"]
 }
+

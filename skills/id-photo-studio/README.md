@@ -4,6 +4,31 @@
 
 ---
 
+## サンプルギャラリー / Sample Gallery / 样例展示
+
+### 元画像（屋外スナップ写真 / 2ショット）
+<p align="center">
+  <img src="./assets/samples/original_two_shot.jpg" width="480" alt="Original Two-shot Photo" />
+  <br>
+  <em>元写真：頭の傾き、カジュアルな服装、屋外の自然光・木々の背景、2人が並んだスナップ写真</em>
+</p>
+
+### 1. お兄ちゃん（Brother / 哥哥）
+| 項目 | パターンA（口を閉じた証明写真表情＋スーツ） | パターンC（元の笑顔100%維持＋スーツ） | L判プリント用シート（4面付け） |
+| :--- | :---: | :---: | :---: |
+| **プレビュー** | <img src="./assets/samples/brother_passport_45x35mm_pattern_a.jpg" width="180" alt="Brother Pattern A" /> | <img src="./assets/samples/brother_passport_45x35mm_pattern_c.jpg" width="180" alt="Brother Pattern C" /> | <img src="./assets/samples/brother_sheet_L_pattern_a.jpg" width="180" alt="Brother L Sheet" /> |
+| **規格** | パスポート・マイナンバー（45×35mm） | パスポート・マイナンバー（45×35mm） | L判（89×127mm）300 DPI |
+| **特徴** | 傾き水平補正（+17.93°）＋目元100%本人ロック＋閉口補正 | 傾き水平補正（+17.93°）＋顔・笑顔・歯並び100%維持 | トンボ（裁断線）・50mm実寸確認スケール付き |
+
+### 2. 妹さん（Sister / 妹妹）
+| 項目 | パターンA（口を閉じた証明写真表情＋フォーマル） | パターンC（元の笑顔100%維持＋フォーマル） | L判プリント用シート（4面付け） |
+| :--- | :---: | :---: | :---: |
+| **プレビュー** | <img src="./assets/samples/sister_passport_45x35mm_pattern_a.jpg" width="180" alt="Sister Pattern A" /> | <img src="./assets/samples/sister_passport_45x35mm_pattern_c.jpg" width="180" alt="Sister Pattern C" /> | <img src="./assets/samples/sister_sheet_L_pattern_a.jpg" width="180" alt="Sister L Sheet" /> |
+| **規格** | パスポート・マイナンバー（45×35mm） | パスポート・マイナンバー（45×35mm） | L判（89×127mm）300 DPI |
+| **特徴** | 傾き水平補正（-25.02°）＋目元100%本人ロック＋閉口補正 | 傾き水平補正（-25.02°）＋顔・笑顔・歯並び100%維持 | トンボ（裁断線）・50mm実寸確認スケール付き |
+
+---
+
 ## 日本語
 
 任意の人物写真（スナップ写真・自撮り・私服写真・複数人写真など）から、公的規格（履歴書・マイナンバー・パスポート・運転免許証・米国ビザ等）に準拠した証明写真データおよびコンビニプリント用（L判／2L判）面付けシートを作成するAIエージェントスキルです。
@@ -22,7 +47,9 @@
 id-photo-studio/
 ├── SKILL.md                  # スキル定義・ワークフロー手順書
 ├── manifest.json             # メタデータ
-├── README.md                 # 3言語（日英中）ガイド
+├── README.md                 # 3言語（日英中）ガイド＋サンプルギャラリー
+├── assets/
+│   └── samples/              # サンプル画像（元写真・単体証明写真・L判シート）
 ├── references/
 │   └── presets.md            # 各国規格サイズ表・プロンプト集
 └── scripts/
